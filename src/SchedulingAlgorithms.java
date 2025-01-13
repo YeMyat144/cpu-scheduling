@@ -81,10 +81,10 @@ public class SchedulingAlgorithms {
         System.out.printf("The Average Process Waiting Time = %.2f ms\n", (double) totalWaitingTime / processList.size());
     }
 
-    public static void displayProcesses(List<Process> processList) {
-        System.out.println("\nProcess\tCreation_time\tBurst_time\tPriority");
-        for (Process p : processList) {
-            System.out.printf("%s\t\t%d\t\t\t%d\t\t%d\n", p.name, p.creationTime, p.burstTime, p.priority);
+    public static void displayProcesses(List<Process> processes) {
+        System.out.printf("\n%-10s%-15s%-15s%-10s\n", "Process", "Creation_time", "Burst_time", "Priority");
+        for (Process p : processes) {
+            System.out.printf("%-10s%-15d%-15d%-10d\n", p.name, p.creationTime, p.burstTime, p.priority);
         }
     }
 
