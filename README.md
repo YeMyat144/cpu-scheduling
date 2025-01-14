@@ -1,18 +1,21 @@
-## Getting Started
+# CPU Scheduling
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This project is a Java-based simulation for various CPU scheduling algorithms. It allows users to input processes manually or generate random burst times and priorities to simulate and visualize how different scheduling algorithms work.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## Features
+- Simulates the following CPU scheduling algorithms:
+  - **First Come First Serve (FCFS)**
+  - **Shortest Job First (SJF)**
+  - **Priority Scheduling**
+  - **Round Robin (with user-defined time quantum)**
+- Allows manual input of process details or random generation of burst time and priority.
+- Displays process information in a neat tabular format.
+- Calculates and displays:
+  - Gantt chart for process execution.
+  - Average waiting time for each algorithm.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
