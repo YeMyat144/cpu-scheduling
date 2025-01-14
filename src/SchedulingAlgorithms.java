@@ -36,36 +36,39 @@ public class SchedulingAlgorithms {
         System.out.println("\n" + "=".repeat(32));
         System.out.println("Round Robin CPU scheduling algorithm");
         System.out.println("=".repeat(32));
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the Time Quantum: ");
-        int timeQuantum = scanner.nextInt();
-
-        List<Process> queue = new ArrayList<>(processList);
-        int currentTime = 0;
-        StringBuilder ganttChart = new StringBuilder("Gantt chart <with starting time is zero>: \n|");
-        Map<String, Integer> waitingTimes = new HashMap<>();
-
-        while (!queue.isEmpty()) {
-            Process current = queue.remove(0);
-            int timeSpent = Math.min(current.burstTime, timeQuantum);
-
-            ganttChart.append(" ").append(current.name).append("(").append(currentTime).append("-").append(currentTime + timeSpent).append(") |");
-
-            current.burstTime -= timeSpent;
-            currentTime += timeSpent;
-
-            if (current.burstTime > 0) {
-                queue.add(current);
-            } else {
-                waitingTimes.put(current.name, currentTime - current.creationTime - (current.burstTime + timeSpent));
+    
+        try (Scanner scanner = new Scanner(System.in)) { 
+            System.out.print("Enter the Time Quantum: ");
+            int timeQuantum = scanner.nextInt();
+    
+            List<Process> queue = new ArrayList<>(processList);
+            int currentTime = 0;
+            StringBuilder ganttChart = new StringBuilder("Gantt chart <with starting time is zero>: \n|");
+            Map<String, Integer> waitingTimes = new HashMap<>();
+    
+            while (!queue.isEmpty()) {
+                Process current = queue.remove(0);
+                int timeSpent = Math.min(current.burstTime, timeQuantum);
+    
+                ganttChart.append(" ").append(current.name).append("(").append(currentTime).append("-").append(currentTime + timeSpent).append(") |");
+    
+                current.burstTime -= timeSpent;
+                currentTime += timeSpent;
+    
+                if (current.burstTime > 0) {
+                    queue.add(current);
+                } else {
+                    waitingTimes.put(current.name, currentTime - current.creationTime - (current.burstTime + timeSpent));
+                }
             }
+    
+            System.out.println(ganttChart);
+            displayWaitingTimes(waitingTimes);
+        } catch (InputMismatchException e) {
+            System.err.println("Invalid input. Please enter an integer for the Time Quantum.");
         }
-
-        System.out.println(ganttChart);
-        displayWaitingTimes(waitingTimes);
     }
-
+    
     public static void calculateAndDisplayTimes(List<Process> processList, String algorithm) {
         StringBuilder ganttChart = new StringBuilder("Gantt chart <with starting time is zero>: \n|");
         int currentTime = 0;
