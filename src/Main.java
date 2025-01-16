@@ -21,16 +21,14 @@ public class Main {
                 System.out.println("\n" + "=".repeat(32));
                 System.out.println("CPU Scheduling Algorithms");
                 System.out.println("=".repeat(32));
-                System.out.println("1. FCFS\n2. SJF\n3. Priority\n4. Round Robin");
+                System.out.println("1. FCFS\n2. Round Robin");
                 System.out.print("Select one of the CPU scheduling algorithms by entering its choice number: ");
 
                 int choice = scanner.nextInt();
 
                 switch (choice) {
                     case 1 -> SchedulingAlgorithms.fcfs(processList);
-                    case 2 -> SchedulingAlgorithms.sjf(processList);
-                    case 3 -> SchedulingAlgorithms.priorityScheduling(processList);
-                    case 4 -> SchedulingAlgorithms.roundRobin(processList);
+                    case 2 -> SchedulingAlgorithms.roundRobin(processList);
                     default -> {
                         System.out.println("Invalid choice. Try again.");
                         continue;
